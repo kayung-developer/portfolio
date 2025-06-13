@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aondover Pascal Oryiman | Software Engineer</title>
+    <meta name="description" content="The portfolio of Aondover Pascal Oryiman, a versatile Full-Stack Web Developer and Software Engineer specializing in Python, FastAPI, AI/ML, and JavaScript.">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome & Devicon for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* CSS STYLES - ALL IN ONE FILE */
+
+        /* 1. CSS VARIABLES & RESET */
+        :root {
+            --bg-color: #0f172a; /* Navy Blue */
+            --glass-bg: rgba(30, 41, 59, 0.5); /* Semi-transparent card bg */
+            --border-color: rgba(56, 189, 248, 0.2);
+            --primary-color: #38bdf8; /* Sky Blue */
+            --secondary-color: #818cf8; /* Indigo */
+            --text-color: #e2e8f0; /* Lighter Gray */
+            --text-muted-color: #94a3b8; /* Slate Gray */
+            --font-family: 'Poppins', sans-serif;
+            --shadow-color: rgba(56, 189, 248, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 25px 25px;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* 2. GENERAL & UTILITY CLASSES */
+        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
+        section { padding: 6rem 0; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #fff; }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 4rem; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h3 { font-size: 1.5rem; color: var(--text-color); }
+        p { margin-bottom: 1rem; color: var(--text-muted-color); font-weight: 300; }
+        a { color: var(--primary-color); text-decoration: none; }
+        .btn { display: inline-block; background: var(--primary-color); color: #0f172a; padding: 0.8rem 1.8rem; border-radius: 50px; border: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin: 0.5rem; text-decoration: none; }
+        .btn:hover { background: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        .btn-outline:hover { background: var(--primary-color); color: #0f172a; }
+        .text-center { text-align: center; margin-top: 2rem;}
+
+        /* 3. HEADER & NAVIGATION */
+        .main-header { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .main-nav ul { display: flex; list-style: none; }
+        .main-nav ul li a { color: var(--text-muted-color); padding: 0.5rem 1rem; font-weight: 400; transition: color 0.3s ease; position: relative; }
+        .main-nav ul li a:hover, .main-nav ul li a.active { color: #fff; text-decoration: none; }
+        .main-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--primary-color); transition: width 0.3s ease; }
+        .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 50%; }
+        .menu-toggle { display: none; }
+
+        /* 4. HERO SECTION */
+        #hero { min-height: 100vh; display: flex; align-items: center; }
+        .hero-grid { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 3rem; }
+        .hero-text h1 span { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.5rem; font-weight: 300; margin: 1.5rem 0 2.5rem; color: var(--text-muted-color); }
+        .hero-subtitle .typewriter { border-right: 3px solid var(--primary-color); animation: blink 0.75s step-end infinite; }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--primary-color); } }
+        .hero-image { position: relative; }
+        .hero-image img { width: 100%; max-width: 300px; border-radius: 50%; border: 5px solid var(--border-color); box-shadow: 0 0 30px var(--shadow-color); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+
+        /* 5. GLASSMORPHIC CARD STYLE */
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+        .glass-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 30px var(--shadow-color); }
+
+        /* 6. SKILLS SECTION */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; }
+        .skill-item { background: var(--glass-bg); padding: 1.5rem 1rem; border-radius: 10px; border: 1px solid var(--border-color); transition: all 0.3s ease; }
+        .skill-item:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .skill-item i { font-size: 3rem; color: var(--primary-color); }
+        .skill-item p { margin-top: 0.8rem; margin-bottom: 0; font-weight: 400; font-size: 0.9rem; color: var(--text-color); }
+
+        /* 7. PROJECTS SECTION */
+        .project-filters { text-align: center; margin-bottom: 3rem; }
+        .filter-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted-color); padding: 0.5rem 1.5rem; margin: 0.2rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; }
+        .filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+        .project-card { display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .project-card h3 { color: #fff; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .tech-tag { background: rgba(56, 189, 248, 0.1); color: var(--primary-color); padding: 0.2rem 0.6rem; border-radius: 5px; font-size: 0.8rem; font-weight: 600; }
+        .project-links { margin-top: auto; padding-top: 1rem; display: flex; gap: 1.5rem; align-items: center;}
+        .project-links a { font-weight: 600; }
+        .project-links a i { margin-right: 0.5rem; }
+        .project-card.hide { display: none; }
+        .project-card.hidden-project { display: none; }
+        .project-card.reveal { animation: fadeIn 0.5s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 8. EXPERIENCE SECTION */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--glass-bg); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+        .timeline-item { padding: 1rem 40px; position: relative; width: 50%; }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-color); border: 4px solid var(--primary-color); top: 25px; border-radius: 50%; z-index: 1; }
+        .timeline-left { left: 0; }
+        .timeline-right { left: 50%; }
+        .timeline-right::after { left: -10px; }
+        .timeline-content { padding: 1.5rem; position: relative; }
+        .timeline-content h3 { margin-top: 0; }
+        .timeline-content .date { font-size: 0.9rem; font-weight: 600; color: var(--text-muted-color); margin-bottom: 0.5rem; }
+        .timeline-content ul { padding-left: 1.2rem; color: var(--text-muted-color); font-weight: 300; }
+
+        /* 9. EDUCATION & PUBLICATIONS */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        #education ul, #publications ul { list-style: none; }
+        #education li, #publications li { padding: 1.5rem; margin-bottom: 1rem; }
+        .item-title { font-weight: 600; color: var(--text-color); }
+        .item-subtitle { color: var(--text-muted-color); font-size: 0.9rem; }
+        .item-link { float: right; font-weight: bold; transition: color 0.3s; }
+        .item-link:hover { color: var(--secondary-color); }
+
+        /* 10. FOOTER (CONTACT) */
+        #contact { text-align: center; }
+        #contact p { max-width: 600px; margin-left: auto; margin-right: auto; }
+        .social-links a { font-size: 2.2rem; margin: 0 1.2rem; color: var(--text-muted-color); transition: all 0.3s; }
+        .social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
+        .footer-bottom p { margin-top: 4rem; font-size: 0.9rem; color: var(--text-muted-color); }
+
+        /* 11. RESPONSIVENESS */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-image { grid-row: 1; margin: 0 auto 3rem; }
+            .hero-text { text-align: center; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            .menu-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; z-index: 1001; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--bg-color); flex-direction: column; justify-content: center; align-items: center; transition: right 0.5s ease-in-out; }
+            .main-nav.active { right: 0; }
+            .main-nav ul { flex-direction: column; text-align: center; }
+            .main-nav ul li { margin: 1.5rem 0; }
+            .timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
+            .timeline-left, .timeline-right { left: 0; }
+            .timeline-item::after { left: 11px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">Pascal Aondover</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <p>Hello, I'm</p>
+                        <h1>Aondover <span>Pascal Oryiman</span></h1>
+                        <p class="hero-subtitle">A <span class="typewriter"></span></p>
+                        <p>I design and build scalable, intelligent, and user-centric applications from concept to deployment.</p>
+                        <a href="#contact" class="btn">Get In Touch</a>
+                        <a href="Aondover_Pascal_Oryiman_CV.pdf" target="_blank" class="btn btn-outline">Download CV</a>
+                    </div>
+                    <div class="hero-image">
+                        <!-- IMPORTANT: Place an image named 'profile.png' in the same folder as this file -->
+                        <img src="profile.jpg" alt="Aondover Pascal Oryiman">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="fade-in">
+            <div class="container">
+                <h2>My Technical Toolbox</h2>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="devicon-python-plain"></i><p>Python</p></div>
+                    <div class="skill-item"><i class="devicon-javascript-plain"></i><p>JavaScript</p></div>
+                    <div class="skill-item"><i class="devicon-react-original"></i><p>React</p></div>
+                    <div class="skill-item"><i class="fa-solid fa-bolt"></i><p>FastAPI</p></div>
+                    <div class="skill-item"><i class="devicon-docker-plain"></i><p>Docker</p></div>
+                    <div class="skill-item"><i class="devicon-postgresql-plain"></i><p>PostgreSQL</p></div>
+                    <div class="skill-item"><i class="fa-solid fa-robot"></i><p>AI / ML</p></div>
+                    <div class="skill-item"><i class="devicon-git-plain"></i><p>Git</p></div>
+                    <div class="skill-item"><i class="devicon-csharp-plain"></i><p>C#</p></div>
+                    <div class="skill-item"><i class="devicon-html5-plain"></i><p>HTML5</p></div>
+                    <div class="skill-item"><i class="devicon-css3-plain"></i><p>CSS3</p></div>
+                    <div class="skill-item"><i class="devicon-firebase-plain"></i><p>Firebase</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="fade-in">
+            <div class="container">
+                <h2>My Work & Projects</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                    <button class="filter-btn" data-filter="ai">AI/ML</button>
+                    <button class="filter-btn" data-filter="desktop">Desktop</button>
+                    <button class="filter-btn" data-filter="robotics">Robotics</button>
+                </div>
+                <div class="projects-grid">
+                    <!-- NEW PROJECTS FIRST -->
+                    <div class="project-card glass-card" data-category="fullstack ai">
+                        <h3>NovaWrite AI</h3>
+                        <p>Premier AI writing assistant using GPT-4, Gemini, and more via Firebase Cloud Functions for a rich, multi-lingual writing experience.</p>
+                        <div class="project-tech"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">Firebase</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">AI</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/NovaWrite-AI" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://nova-write-ai.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card" data-category="fullstack">
+                        <h3>Streamverse</h3>
+                        <p>Intelligent video streaming SPA using React and SQLite.js for in-browser data persistence, simulating profiles, recommendations, and subscriptions.</p>
+                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">SQLite.js</span><span class="tech-tag">Context API</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/Streamverse" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://kayung-developer.github.io/Streamverse/app.html" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card" data-category="desktop robotics ai">
+                        <h3>Intellibot Mobile Robot</h3>
+                        <p>Comprehensive simulator for an autonomous mobile robot, with a FastAPI backend and a CustomTkinter GUI for real-time visualization.</p>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">CustomTkinter</span><span class="tech-tag">A* Pathing</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/Intellibot-Mobile-Robot-Navigation" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card" data-category="fullstack ai">
+                        <h3>PredictoPro</h3>
+                        <p>Advanced platform for real-time stock/crypto tracking, ML-based predictions, and portfolio management with a FastAPI backend.</p>
+                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Chart.js</span><span class="tech-tag">AI/ML</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/PredictoPro" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card" data-category="fullstack">
+                        <h3>NovaTrade</h3>
+                        <p>Simulated crypto & forex trading platform with a React frontend, FastAPI backend, and Firebase for real-time user authentication.</p>
+                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Firebase</span><span class="tech-tag">Websockets</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/NovaTrade" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card" data-category="fullstack">
+                        <h3>InstaRetro</h3>
+                        <p>Feature-rich Instagram clone SPA using React and Firebase for auth, Firestore database, and file storage for a complete social media experience.</p>
+                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Firestore</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/InstaRetro" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+
+                    <!-- HIDDEN PROJECTS (REVEALED ON CLICK) -->
+                    <div class="project-card glass-card hidden-project" data-category="desktop ai">
+                        <h3>NovaVoice AI</h3>
+                        <p>Full-stack desktop Text-to-Speech (TTS) app with a CustomTkinter GUI and a FastAPI backend, featuring voice cloning and subscriptions.</p>
+                        <div class="project-tech"><span class="tech-tag">CustomTkinter</span><span class="tech-tag">FastAPI</span><span class="tech-tag">TTS</span><span class="tech-tag">SQLite</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/NovaVoice-AI" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="fullstack">
+                        <h3>InvoicyPro Dynamics</h3>
+                        <p>Single-file invoicing SPA built with React and Firebase for managing clients and invoices directly in the browser.</p>
+                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Firestore</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/InvoicyPro-Dynamics" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="fullstack ai">
+                        <h3>IntelliCoach Pro</h3>
+                        <p>Conversational AI app using a FastAPI backend for personalized career advice and skill-gap analysis.</p>
+                        <div class="project-tech"><span class="tech-tag">FastAPI</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">AI</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliCoach-Pro" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="fullstack">
+                        <h3>IntelliWeb Engine</h3>
+                        <p>Monolithic e-commerce platform handling users, content, and sales with Stripe/PayPal integration and SSR.</p>
+                        <div class="project-tech"><span class="tech-tag">FastAPI</span><span class="tech-tag">Firebase</span><span class="tech-tag">JWT</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/slogantechllc" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="fullstack">
+                        <h3>IntelliMeet-X</h3>
+                        <p>Real-time, multi-user video conferencing app built with WebRTC and a Websockets signaling server.</p>
+                        <div class="project-tech"><span class="tech-tag">WebRTC</span><span class="tech-tag">Websockets</span><span class="tech-tag">FastAPI</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliMeet-X" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="desktop ai">
+                        <h3>GenMaster AI Studio</h3>
+                        <p>Standalone desktop app for AI image generation, with a multithreaded backend to prevent UI freezing.</p>
+                        <div class="project-tech"><span class="tech-tag">CustomTkinter</span><span class="tech-tag">FastAPI</span><span class="tech-tag">AI</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/GenMaster-AI-Studio" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+                    <div class="project-card glass-card hidden-project" data-category="fullstack">
+                        <h3>IntelliResume Pro</h3>
+                        <p>A client-side resume builder built from scratch with pure Vanilla JS and Local Storage API.</p>
+                        <div class="project-tech"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">HTML5/CSS3</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliResume-Pro" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
+                    </div>
+                     <div class="project-card glass-card hidden-project" data-category="desktop">
+                        <h3>African Deity Kombat</h3>
+                        <p>A 3D fighting game developed with the Unity Engine, C#, and C++, showcasing game development skills.</p>
+                        <div class="project-tech"><span class="tech-tag">Unity</span><span class="tech-tag">C#</span><span class="tech-tag">C++</span></div>
+                        <div class="project-links"><a href="https://github.com/kayung-developer/African-Diety-Kombat" target="_blank"><i class="fab fa-github"></i> Code (Private)</a></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button id="show-more-projects" class="btn btn-outline">Show More</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="fade-in">
+            <div class="container">
+                <h2>Career Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item timeline-left">
+                        <div class="timeline-content glass-card">
+                            <h3>Software Engineer</h3>
+                            <div class="date">Slogan Technologies (Self-employed) | 2019 - Present</div>
+                             <ul>
+                                <li>Led development of scalable AI projects, including a 3D game in Unity.</li>
+                                <li>Deployed advanced Python apps for robotics and cybersecurity.</li>
+                                <li>Mentored team members, improving project efficiency by 40%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-right">
+                        <div class="timeline-content glass-card">
+                            <h3>Website Designer & Engineer</h3>
+                            <div class="date">Royal Heritage Group | 2023 - 2024</div>
+                            <ul>
+                                <li>Increased website traffic by 90% through UX improvements.</li>
+                                <li>Improved data retrieval speeds by 20% by integrating SQL databases with a PHP backend.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="fade-in">
+            <div class="container">
+                 <div class="grid-2">
+                    <div>
+                        <h2>Education & Certs</h2>
+                        <ul>
+                             <li class="glass-card"><div class="item-title">M.Sc Automation & Mechatronics (ongoing)</div><div class="item-subtitle">Saint Petersburg Electrotechnical University</div></li>
+                            <li class="glass-card"><div class="item-title">B.Sc Physics (Hons)</div><div class="item-subtitle">Joseph Sarwuan Tarka University</div></li>
+                            <li class="glass-card"><div class="item-title">AI & Data Fundamentals</div><div class="item-subtitle">IBM <a href="#" class="item-link">[view]</a></div></li>
+                            <li class="glass-card"><div class="item-title">Python Development</div><div class="item-subtitle">MTF Institute <a href="#" class="item-link">[view]</a></div></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Publications</h2>
+                        <ul>
+                            <li class="glass-card">
+                                <div class="item-title">Advancing Theoretical Foundations of AI</div>
+                                <div class="item-subtitle">Scienxt Journal of AI & ML (SJAML), 2024 <a href="https://www.scienxt.com/journals/index.php/sjiaml/article/view/215" target="_blank" class="item-link">[view]</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="fade-in">
+        <div class="container">
+            <h2>Let's Build Something Great</h2>
+            <p>I am currently open to new opportunities and collaborations. If you have a project in mind or just want to connect, feel free to reach out. Let's make it happen!</p>
+            <a href="mailto:aondoverpascaloryiman@gmail.com" class="btn">aondoverpascaloryiman@gmail.com</a>
+            <div class="social-links">
+                <a href="https://github.com/kayung-developer" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="tel:+2347065768073" target="_blank" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                <a href="https://wa.me/+13434748966" target="_blank" aria-label="Whatsapp"><i class="fa fa-whatsapp"></i></a>
+            </div>
+             <div class="footer-bottom">
+                 <p>© 2025 Aondover Pascal Oryiman. Designed & Built with ❤️</p>
+             </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. TYPEWRITER EFFECT
+            const typewriterElement = document.querySelector('.typewriter');
+            const texts = ["Full-Stack Developer", "AI & ML Enthusiast", "Proactive Problem-Solver", "Creative Technologist"];
+            let textIndex = 0, charIndex = 0;
+            function type() {
+                if (charIndex < texts[textIndex].length) {
+                    typewriterElement.textContent += texts[textIndex].charAt(charIndex++);
+                    setTimeout(type, 100);
+                } else { setTimeout(erase, 2000); }
+            }
+            function erase() {
+                if (charIndex > 0) {
+                    typewriterElement.textContent = texts[textIndex].substring(0, --charIndex);
+                    setTimeout(erase, 50);
+                } else { textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
+            }
+            type();
+
+            // 2. MOBILE NAVIGATION
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            menuToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
+            document.querySelectorAll('.main-nav a').forEach(link => link.addEventListener('click', () => mainNav.classList.remove('active')));
+
+            // 3. FADE-IN ON SCROLL
+            const sections = document.querySelectorAll('section, footer');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // 4. ACTIVE NAV LINK HIGHLIGHTING
+            const navLinks = document.querySelectorAll('.main-nav a');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 70) { current = section.getAttribute('id'); }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+                });
+            });
+
+            // 5. PROJECT FILTERING & SHOW MORE
+            const filterContainer = document.querySelector('.project-filters');
+            const projectCards = document.querySelectorAll('.project-card');
+            const showMoreBtn = document.getElementById('show-more-projects');
+
+            // Filter logic
+            filterContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    filterContainer.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+
+                    const filterValue = e.target.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (card.dataset.category.includes(filterValue) || filterValue === 'all') {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                }
+            });
+
+            // Show More logic
+            if (showMoreBtn) {
+                showMoreBtn.addEventListener('click', () => {
+                    const hiddenProjects = document.querySelectorAll('.project-card.hidden-project');
+                    hiddenProjects.forEach(card => {
+                        card.classList.remove('hidden-project');
+                        card.classList.add('reveal');
+                    });
+                    showMoreBtn.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
