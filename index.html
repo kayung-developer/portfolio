@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aondover Pascal Oryiman | Software Engineer</title>
-    <meta name="description" content="The portfolio of Aondover Pascal Oryiman, a versatile Full-Stack Web Developer and Software Engineer specializing in Python, FastAPI, AI/ML, and JavaScript.">
+    <title>Aondover Pascal Oryiman | Software Engineer & AI Architect</title>
+    <meta name="description" content="The portfolio of Aondover Pascal Oryiman, a Software Engineer architecting production-grade, AI-powered financial systems and full-stack applications.">
 
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome & Devicon for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         /* CSS STYLES - ALL IN ONE FILE */
 
         /* 1. CSS VARIABLES & RESET */
         :root {
-            --bg-color: #0f172a; /* Navy Blue */
-            --glass-bg: rgba(30, 41, 59, 0.5); /* Semi-transparent card bg */
-            --border-color: rgba(56, 189, 248, 0.2);
+            --bg-color: #020617; /* Darker Navy */
+            --glass-bg: rgba(15, 23, 42, 0.5); /* Semi-transparent card bg */
+            --border-color: rgba(56, 189, 248, 0.15);
+            --spotlight-color: rgba(56, 189, 248, 0.08);
             --primary-color: #38bdf8; /* Sky Blue */
             --secondary-color: #818cf8; /* Indigo */
+            --accent-color: #c084fc; /* Purple */
             --text-color: #e2e8f0; /* Lighter Gray */
             --text-muted-color: #94a3b8; /* Slate Gray */
             --font-family: 'Poppins', sans-serif;
             --shadow-color: rgba(56, 189, 248, 0.1);
+            --radius: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,134 +39,227 @@
         body {
             font-family: var(--font-family);
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
-            background-size: 25px 25px;
             color: var(--text-color);
             line-height: 1.7;
+            overflow-x: hidden; /* Prevent horizontal scroll from aurora */
+        }
+        
+        /* Aurora Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(56, 189, 248, 0.15), transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(129, 140, 248, 0.15), transparent 40%);
+            animation: moveAurora 20s infinite linear;
+        }
+
+        @keyframes moveAurora {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(10px, 20px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         /* 2. GENERAL & UTILITY CLASSES */
-        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
-        section { padding: 6rem 0; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .container { max-width: 1200px; margin: auto; padding: 0 2rem; }
+        section { padding: 7rem 0; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         section.visible { opacity: 1; transform: translateY(0); }
         h1, h2, h3 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #fff; }
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 4rem; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h3 { font-size: 1.5rem; color: var(--text-color); }
+        h1 { font-size: 3.8rem; }
+        h2 { font-size: 3rem; text-align: center; margin-bottom: 4rem; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: relative; }
+        h3 { font-size: 1.6rem; color: var(--text-color); }
         p { margin-bottom: 1rem; color: var(--text-muted-color); font-weight: 300; }
         a { color: var(--primary-color); text-decoration: none; }
-        .btn { display: inline-block; background: var(--primary-color); color: #0f172a; padding: 0.8rem 1.8rem; border-radius: 50px; border: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin: 0.5rem; text-decoration: none; }
+        .btn { display: inline-block; background: var(--primary-color); color: var(--bg-color); padding: 0.8rem 2rem; border-radius: 50px; border: none; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin: 0.5rem; text-decoration: none; letter-spacing: 0.5px; }
         .btn:hover { background: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
         .btn-outline:hover { background: var(--primary-color); color: #0f172a; }
-        .text-center { text-align: center; margin-top: 2rem;}
 
         /* 3. HEADER & NAVIGATION */
-        .main-header { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+        .main-header { background: rgba(2, 6, 23, 0.6); backdrop-filter: blur(12px); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
         .main-header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: -1px; display: flex; align-items: center; }
+        .logo img { height: 40px; /* Adjust logo height as needed */ margin-right: 10px; }
         .main-nav ul { display: flex; list-style: none; }
-        .main-nav ul li a { color: var(--text-muted-color); padding: 0.5rem 1rem; font-weight: 400; transition: color 0.3s ease; position: relative; }
-        .main-nav ul li a:hover, .main-nav ul li a.active { color: #fff; text-decoration: none; }
-        .main-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--primary-color); transition: width 0.3s ease; }
+        .main-nav ul li a { color: var(--text-muted-color); padding: 0.5rem 1rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .main-nav ul li a:hover, .main-nav ul li a.active { color: #fff; }
+        .main-nav ul li a::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--primary-color); transition: width 0.3s ease; }
         .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 50%; }
         .menu-toggle { display: none; }
 
         /* 4. HERO SECTION */
         #hero { min-height: 100vh; display: flex; align-items: center; }
         .hero-grid { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 3rem; }
-        .hero-text h1 span { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-subtitle { font-size: 1.5rem; font-weight: 300; margin: 1.5rem 0 2.5rem; color: var(--text-muted-color); }
+        .hero-text { text-align: left; }
+        .hero-text h1 span { background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.5rem; font-weight: 300; margin: 1.5rem 0 2.5rem; color: var(--text-muted-color); min-height: 2.5rem; }
         .hero-subtitle .typewriter { border-right: 3px solid var(--primary-color); animation: blink 0.75s step-end infinite; }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--primary-color); } }
-        .hero-image { position: relative; }
-        .hero-image img { width: 100%; max-width: 300px; border-radius: 50%; border: 5px solid var(--border-color); box-shadow: 0 0 30px var(--shadow-color); animation: float 6s ease-in-out infinite; }
+        .hero-image { position: relative; text-align: center; }
+        .hero-image img { width: 100%; max-width: 320px; border-radius: 50%; border: 7px solid var(--border-color); box-shadow: 0 0 40px var(--shadow-color), 0 0 80px rgba(129, 140, 248, 0.2); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
 
-        /* 5. GLASSMORPHIC CARD STYLE */
-        .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-        .glass-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 30px var(--shadow-color); }
+        /* 5. GLASSMORPHIC CARD 2.0 STYLE with SPOTLIGHT */
+        .glass-card { 
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); 
+            border-radius: var(--radius); 
+            padding: 2rem; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before { /* Spotlight effect */
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 70%);
+            top: var(--y, -100px);
+            left: var(--x, -100px);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .glass-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(56, 189, 248, 0.4); 
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        .glass-card:hover::before { opacity: 1; }
 
         /* 6. SKILLS SECTION */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; text-align: center; }
-        .skill-item { background: var(--glass-bg); padding: 1.5rem 1rem; border-radius: 10px; border: 1px solid var(--border-color); transition: all 0.3s ease; }
-        .skill-item:hover { transform: translateY(-5px); border-color: var(--primary-color); }
-        .skill-item i { font-size: 3rem; color: var(--primary-color); }
-        .skill-item p { margin-top: 0.8rem; margin-bottom: 0; font-weight: 400; font-size: 0.9rem; color: var(--text-color); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1.5rem; text-align: center; }
+        .skill-item { background: transparent; border: 1px solid var(--border-color); padding: 2rem 1rem; border-radius: var(--radius); transition: all 0.3s ease; cursor: pointer; }
+        .skill-item:hover { transform: translateY(-5px) scale(1.05); background: var(--glass-bg); border-color: var(--primary-color); }
+        .skill-item i { font-size: 3.5rem; color: var(--primary-color); transition: color 0.3s ease; }
+        .skill-item:hover i { color: var(--secondary-color); }
+        .skill-item p { margin-top: 1rem; margin-bottom: 0; font-weight: 500; font-size: 1rem; color: var(--text-color); }
 
         /* 7. PROJECTS SECTION */
-        .project-filters { text-align: center; margin-bottom: 3rem; }
-        .filter-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted-color); padding: 0.5rem 1.5rem; margin: 0.2rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; }
-        .filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
-        .project-card { display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+        .featured-project .project-details { order: 1; }
+        .featured-project .project-tech-stack { order: 2; }
+        .featured-project:nth-child(even) .project-details { order: 2; }
+        .featured-project:nth-child(even) .project-tech-stack { order: 1; }
+        
+        .project-tag { font-size: 0.9rem; font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .project-links { margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .tech-stack-list { list-style: none; padding: 0; }
+        .tech-stack-list li {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--text-muted-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border-left: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .tech-stack-list li:hover {
+            transform: translateX(5px);
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--text-color);
+        }
+        .tech-stack-list i { margin-right: 1rem; color: var(--primary-color); width: 20px; text-align: center; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { display: flex; flex-direction: column; }
         .project-card h3 { color: #fff; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-        .tech-tag { background: rgba(56, 189, 248, 0.1); color: var(--primary-color); padding: 0.2rem 0.6rem; border-radius: 5px; font-size: 0.8rem; font-weight: 600; }
-        .project-links { margin-top: auto; padding-top: 1rem; display: flex; gap: 1.5rem; align-items: center;}
-        .project-links a { font-weight: 600; }
-        .project-links a i { margin-right: 0.5rem; }
+        .project-tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .tech-tag { background: rgba(56, 189, 248, 0.1); color: var(--primary-color); padding: 0.3rem 0.8rem; border-radius: 5px; font-size: 0.8rem; font-weight: 600; }
+        .project-card-links { margin-top: auto; padding-top: 1rem; display: flex; gap: 1.5rem; align-items: center;}
+        .project-card-links a { font-weight: 600; }
+        .project-card-links a i { margin-right: 0.5rem; }
         .project-card.hide { display: none; }
-        .project-card.hidden-project { display: none; }
-        .project-card.reveal { animation: fadeIn 0.5s forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .text-center { text-align: center; margin-top: 4rem; }
+        #show-more-projects { margin-top: 1rem; }
 
         /* 8. EXPERIENCE SECTION */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--glass-bg); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 3px; background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color), transparent); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
         .timeline-item { padding: 1rem 40px; position: relative; width: 50%; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-color); border: 4px solid var(--primary-color); top: 25px; border-radius: 50%; z-index: 1; }
+        .timeline-item::after { content: ''; position: absolute; width: 22px; height: 22px; right: -11px; background-color: var(--bg-color); border: 4px solid var(--primary-color); top: 25px; border-radius: 50%; z-index: 1; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .timeline-item:hover::after { transform: scale(1.2); border-color: var(--secondary-color); }
         .timeline-left { left: 0; }
         .timeline-right { left: 50%; }
-        .timeline-right::after { left: -10px; }
-        .timeline-content { padding: 1.5rem; position: relative; }
-        .timeline-content h3 { margin-top: 0; }
-        .timeline-content .date { font-size: 0.9rem; font-weight: 600; color: var(--text-muted-color); margin-bottom: 0.5rem; }
+        .timeline-right::after { left: -11px; }
+        .timeline-content { padding: 2rem; position: relative; }
+        .timeline-content h3 { margin-top: 0; color: var(--text-color); }
+        .timeline-content .date { font-size: 0.9rem; font-weight: 600; color: var(--secondary-color); margin-bottom: 0.5rem; }
         .timeline-content ul { padding-left: 1.2rem; color: var(--text-muted-color); font-weight: 300; }
+        .timeline-content ul li::marker { color: var(--primary-color); }
 
         /* 9. EDUCATION & PUBLICATIONS */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
         #education ul, #publications ul { list-style: none; }
         #education li, #publications li { padding: 1.5rem; margin-bottom: 1rem; }
-        .item-title { font-weight: 600; color: var(--text-color); }
+        .item-title { font-weight: 600; font-size: 1.1rem; color: var(--text-color); }
         .item-subtitle { color: var(--text-muted-color); font-size: 0.9rem; }
         .item-link { float: right; font-weight: bold; transition: color 0.3s; }
         .item-link:hover { color: var(--secondary-color); }
 
         /* 10. FOOTER (CONTACT) */
-        #contact { text-align: center; }
+        #contact { text-align: center; background: var(--bg-color); }
         #contact p { max-width: 600px; margin-left: auto; margin-right: auto; }
-        .social-links a { font-size: 2.2rem; margin: 0 1.2rem; color: var(--text-muted-color); transition: all 0.3s; }
+        #contact .btn { margin: 2rem 0; }
+        .social-links a { font-size: 2.2rem; margin: 0 1.2rem; color: var(--text-muted-color); transition: all 0.3s; display: inline-block; }
         .social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
         .footer-bottom p { margin-top: 4rem; font-size: 0.9rem; color: var(--text-muted-color); }
 
         /* 11. RESPONSIVENESS */
         @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-image { grid-row: 1; margin: 0 auto 3rem; }
             .hero-text { text-align: center; }
+            .project-links { justify-content: center; }
+            .featured-project { grid-template-columns: 1fr; }
+            .featured-project .project-details, .featured-project:nth-child(even) .project-details { order: 2; }
+            .featured-project .project-tech-stack, .featured-project:nth-child(even) .project-tech-stack { order: 1; margin-bottom: 2rem; }
         }
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
+            h1 { font-size: 2.5rem; }
             h2 { font-size: 2.2rem; }
             .menu-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; z-index: 1001; }
-            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: var(--bg-color); flex-direction: column; justify-content: center; align-items: center; transition: right 0.5s ease-in-out; }
+            .main-nav { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(15px); flex-direction: column; justify-content: center; align-items: center; transition: right 0.5s ease-in-out; }
             .main-nav.active { right: 0; }
             .main-nav ul { flex-direction: column; text-align: center; }
             .main-nav ul li { margin: 1.5rem 0; }
             .timeline::after { left: 20px; }
             .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
             .timeline-left, .timeline-right { left: 0; }
-            .timeline-item::after { left: 11px; }
+            .timeline-item::after { left: 10px; }
             .grid-2 { grid-template-columns: 1fr; }
         }
+
     </style>
 </head>
 <body>
 
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo">Pascal Aondover</a>
+            <a href="#" class="logo">
+                <!-- IMPORTANT: Replace 'logo.png' with the path to your logo file -->
+                <img src="profile.jpg" alt="Pascal A.O" style="display: none;"> <!-- Hide if no logo is present -->
+                <span>Pascal A.O.</span> <!-- This text will show if you don't have a logo image -->
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
@@ -179,181 +274,159 @@
     </header>
 
     <main>
+        <!-- NEW HERO SECTION -->
         <section id="hero">
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-text">
                         <p>Hello, I'm</p>
-                        <h1>Aondover <span>Pascal Oryiman</span></h1>
+                        <h1> Pascal <span> Aondover</span></h1>
                         <p class="hero-subtitle">A <span class="typewriter"></span></p>
                         <p>I design and build scalable, intelligent, and user-centric applications from concept to deployment.</p>
                         <a href="mailto:aondoverslogantechllc@outlook.com" class="btn">Get In Touch</a>
-                        <a href="Aondover_Pascal_Oryiman_CV.pdf" target="_blank" class="btn btn-outline">Download CV</a>
+                        <a href="Pascal_Aondover.pdf" target="_blank" class="btn btn-outline">Download CV</a>
                     </div>
                     <div class="hero-image">
-                        <!-- IMPORTANT: Place an image named 'profile.png' in the same folder as this file -->
                         <img src="https://quantumpay-ai.vercel.app/img/ceo.png" alt="Aondover Pascal Oryiman">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="fade-in">
+        <section id="skills">
             <div class="container">
                 <h2>My Technical Toolbox</h2>
                 <div class="skills-grid">
                     <div class="skill-item"><i class="devicon-python-plain"></i><p>Python</p></div>
+                    <div class="skill-item"><i class="devicon-fastapi-plain"></i><p>FastAPI</p></div>
                     <div class="skill-item"><i class="devicon-javascript-plain"></i><p>JavaScript</p></div>
                     <div class="skill-item"><i class="devicon-react-original"></i><p>React</p></div>
-                    <div class="skill-item"><i class="fa-solid fa-bolt"></i><p>FastAPI</p></div>
+                    <div class="skill-item"><i class="fa-solid fa-mobile-screen-button"></i><p>React Native</p></div>
                     <div class="skill-item"><i class="devicon-docker-plain"></i><p>Docker</p></div>
                     <div class="skill-item"><i class="devicon-postgresql-plain"></i><p>PostgreSQL</p></div>
                     <div class="skill-item"><i class="fa-solid fa-robot"></i><p>AI / ML</p></div>
-                    <div class="skill-item"><i class="devicon-git-plain"></i><p>Git</p></div>
-                    <div class="skill-item"><i class="devicon-csharp-plain"></i><p>C#</p></div>
-                    <div class="skill-item"><i class="devicon-html5-plain"></i><p>HTML5</p></div>
-                    <div class="skill-item"><i class="devicon-css3-plain"></i><p>CSS3</p></div>
-                    <div class="skill-item"><i class="devicon-firebase-plain"></i><p>Firebase</p></div>
+                    <div class="skill-item"><i class="devicon-git-plain"></i><p>Git & GitHub</p></div>
+                    <div class="skill-item"><i class="devicon-googlecloud-plain"></i><p>GCP / Firebase</p></div>
+                    <div class="skill-item"><i class="devicon-csharp-plain"></i><p>C# & Unity</p></div>
+                    <div class="skill-item"><i class="devicon-tailwindcss-plain"></i><p>TailwindCSS</p></div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="fade-in">
+        <section id="projects">
             <div class="container">
-                <h2>My Work & Projects</h2>
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
-                    <button class="filter-btn" data-filter="ai">AI/ML</button>
-                    <button class="filter-btn" data-filter="desktop">Desktop</button>
-                    <button class="filter-btn" data-filter="robotics">Robotics</button>
+                <h2>Flagship Projects</h2>
+
+                <!-- QuantumPay Project -->
+                <div class="featured-project">
+                    <div class="project-details glass-card">
+                        <p class="project-tag">FINTECH SUPER-APP</p>
+                        <h3>QuantumPay</h3>
+                        <p>A production-grade, globally-aware financial super-app designed as a complete financial OS. This full-stack monorepo contains a FastAPI backend, a React web app, and a React Native mobile app.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/QuantumPay" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://quantumpay-ai.netlify.app" target="_blank" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-tech-stack">
+                         <ul class="tech-stack-list">
+                            <li><i class="fas fa-server"></i>Backend: FastAPI, SQLAlchemy, PostgreSQL</li>
+                            <li><i class="fas fa-desktop"></i>Web App: React, Tailwind CSS, i18next</li>
+                            <li><i class="fas fa-mobile-alt"></i>Mobile App: React Native, Expo, Zustand</li>
+                            <li><i class="fas fa-cogs"></i>Services: Plaid, Paystack, Monnify, WebSockets</li>
+                            <li><i class="fas fa-brain"></i>AI: Scikit-learn, Pandas for Analytics</li>
+                         </ul>
+                    </div>
                 </div>
+
+                <!-- QuantumLeap AI Trader Project -->
+                 <div class="featured-project">
+                    <div class="project-details glass-card">
+                        <p class="project-tag">AI TRADING PLATFORM</p>
+                        <h3>QuantumLeap AI Trader</h3>
+                        <p>An institutional-grade, full-stack platform for building, backtesting, and deploying automated Crypto/Forex trading strategies, featuring an AI Co-Pilot and secure custodial wallet system.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/kayung-developer/QuantumLeap-AI-Trader" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://quantumleap-ai.vercel.app" target="_blank" class="btn"><i class="fas fa-globe"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-tech-stack">
+                         <ul class="tech-stack-list">
+                            <li><i class="fas fa-server"></i>Backend: FastAPI, SQLAlchemy, WebSockets</li>
+                            <li><i class="fas fa-desktop"></i>Frontend: React, TailwindCSS, Framer Motion</li>
+                            <li><i class="fas fa-brain"></i>AI/ML: XGBoost, Pandas, Google Gemini</li>
+                            <li><i class="fas fa-cogs"></i>Services: TradingView Webhooks, Telegram API</li>
+                            <li><i class="fas fa-database"></i>Database: PostgreSQL with Docker</li>
+                         </ul>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 8rem; font-size: 2.5rem;">More Projects</h2>
                 <div class="projects-grid">
-                    <!-- NEW PROJECTS FIRST -->
                     <div class="project-card glass-card" data-category="fullstack ai">
                         <h3>NovaWrite AI</h3>
                         <p>Premier AI writing assistant using GPT-4, Gemini, and more via Firebase Cloud Functions for a rich, multi-lingual writing experience.</p>
-                        <div class="project-tech"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">Firebase</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">AI</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/NovaWrite-AI" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://nova-write-ai.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <div class="project-tech-tags"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">Firebase</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">AI</span></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/kayung-developer/NovaWrite-AI" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://nova-write-ai.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live</a>
                         </div>
                     </div>
                     <div class="project-card glass-card" data-category="fullstack">
                         <h3>Streamverse</h3>
-                        <p>Intelligent video streaming SPA using React and SQLite.js for in-browser data persistence, simulating profiles, recommendations, and subscriptions.</p>
-                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">SQLite.js</span><span class="tech-tag">Context API</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/Streamverse" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://streamverse-app.vercel.app" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <p>Intelligent video streaming SPA using React and SQLite.js for in-browser data persistence, simulating profiles and recommendations.</p>
+                        <div class="project-tech-tags"><span class="tech-tag">React</span><span class="tech-tag">SQLite.js</span><span class="tech-tag">Context API</span></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/kayung-developer/Streamverse" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://streamverse-app.vercel.app" target="_blank"><i class="fas fa-globe"></i> Live</a>
                         </div>
                     </div>
                     <div class="project-card glass-card" data-category="desktop robotics ai">
                         <h3>Intellibot Mobile Robot</h3>
                         <p>Comprehensive simulator for an autonomous mobile robot, with a FastAPI backend and a CustomTkinter GUI for real-time visualization.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">CustomTkinter</span><span class="tech-tag">A* Pathing</span></div>
-                        <div class="project-links">
+                        <div class="project-tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">FastAPI</span><span class="tech-tag">CustomTkinter</span><span class="tech-tag">A* Pathing</span></div>
+                        <div class="project-card-links">
                             <a href="https://github.com/kayung-developer/Intellibot-Mobile-Robot-Navigation" target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
-                    <div class="project-card glass-card" data-category="fullstack ai">
+                     <div class="project-card glass-card" data-category="fullstack ai">
                         <h3>PredictoPro</h3>
                         <p>Advanced platform for real-time stock/crypto tracking, ML-based predictions, and portfolio management with a FastAPI backend.</p>
-                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Chart.js</span><span class="tech-tag">AI/ML</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/PredictoPro" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://predicto-pro.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <div class="project-tech-tags"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Chart.js</span><span class="tech-tag">AI/ML</span></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/kayung-developer/PredictoPro" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://predicto-pro.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live</a>
                         </div>
                     </div>
                     <div class="project-card glass-card" data-category="fullstack">
                         <h3>NovaTrade</h3>
                         <p>Simulated crypto & forex trading platform with a React frontend, FastAPI backend, and Firebase for real-time user authentication.</p>
-                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Firebase</span><span class="tech-tag">Websockets</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/NovaTrade" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://nova-trade-lime.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <div class="project-tech-tags"><span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Firebase</span><span class="tech-tag">Websockets</span></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/kayung-developer/NovaTrade" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://nova-trade-lime.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live</a>
                         </div>
                     </div>
                     <div class="project-card glass-card" data-category="fullstack">
                         <h3>InstaRetro</h3>
                         <p>Feature-rich Instagram clone SPA using React and Firebase for auth, Firestore database, and file storage for a complete social media experience.</p>
-                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Firestore</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/InstaRetro" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://insta-retro.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <div class="project-tech-tags"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Firestore</span></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/kayung-developer/InstaRetro" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://insta-retro.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live</a>
                         </div>
                     </div>
-
-                    <!-- HIDDEN PROJECTS (REVEALED ON CLICK) -->
-                    <div class="project-card glass-card hidden-project" data-category="desktop ai">
-                        <h3>NovaVoice AI</h3>
-                        <p>Full-stack desktop Text-to-Speech (TTS) app with a CustomTkinter GUI and a FastAPI backend, featuring voice cloning and subscriptions.</p>
-                        <div class="project-tech"><span class="tech-tag">CustomTkinter</span><span class="tech-tag">FastAPI</span><span class="tech-tag">TTS</span><span class="tech-tag">SQLite</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/NovaVoice-AI" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://nova-write-ai.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                        </div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="fullstack">
-                        <h3>InvoicyPro Dynamics</h3>
-                        <p>Single-file invoicing SPA built with React and Firebase for managing clients and invoices directly in the browser.</p>
-                        <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Firestore</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/kayung-developer/InvoicyPro-Dynamics" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://invoicy-pro-dynamics.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                        </div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="fullstack ai">
-                        <h3>IntelliCoach Pro</h3>
-                        <p>Conversational AI app using a FastAPI backend for personalized career advice and skill-gap analysis.</p>
-                        <div class="project-tech"><span class="tech-tag">FastAPI</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">AI</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliCoach-Pro" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="fullstack">
-                        <h3>IntelliWeb Engine</h3>
-                        <p>Monolithic e-commerce platform handling users, content, and sales with Stripe/PayPal integration and SSR.</p>
-                        <div class="project-tech"><span class="tech-tag">FastAPI</span><span class="tech-tag">Firebase</span><span class="tech-tag">JWT</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/slogantechllc" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="fullstack">
-                        <h3>IntelliMeet-X</h3>
-                        <p>Real-time, multi-user video conferencing app built with WebRTC and a Websockets signaling server.</p>
-                        <div class="project-tech"><span class="tech-tag">WebRTC</span><span class="tech-tag">Websockets</span><span class="tech-tag">FastAPI</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliMeet-X" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="desktop ai">
-                        <h3>GenMaster AI Studio</h3>
-                        <p>Standalone desktop app for AI image generation, with a multithreaded backend to prevent UI freezing.</p>
-                        <div class="project-tech"><span class="tech-tag">CustomTkinter</span><span class="tech-tag">FastAPI</span><span class="tech-tag">AI</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/GenMaster-AI-Studio" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
-                    </div>
-                    <div class="project-card glass-card hidden-project" data-category="fullstack">
-                        <h3>IntelliResume Pro</h3>
-                        <p>A client-side resume builder built from scratch with pure Vanilla JS and Local Storage API.</p>
-                        <div class="project-tech"><span class="tech-tag">Vanilla JS</span><span class="tech-tag">HTML5/CSS3</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/IntelliResume-Pro" target="_blank"><i class="fab fa-github"></i> View Code</a></div>
-                         <a href="https://intelli-resume-pro-nine.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                    </div>
-                     <div class="project-card glass-card hidden-project" data-category="desktop">
-                        <h3>African Deity Kombat</h3>
-                        <p>A 3D fighting game developed with the Unity Engine, C#, and C++, showcasing game development skills.</p>
-                        <div class="project-tech"><span class="tech-tag">Unity</span><span class="tech-tag">C#</span><span class="tech-tag">C++</span></div>
-                        <div class="project-links"><a href="https://github.com/kayung-developer/African-Diety-Kombat" target="_blank"><i class="fab fa-github"></i> Code (Private)</a></div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button id="show-more-projects" class="btn btn-outline">Show More</button>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="fade-in">
+        <section id="experience">
             <div class="container">
                 <h2>Career Journey</h2>
                 <div class="timeline">
                     <div class="timeline-item timeline-left">
                         <div class="timeline-content glass-card">
-                            <h3>Software Engineer</h3>
+                            <h3>AI-ML, Software Engineer</h3>
                             <div class="date">Slogan Technologies (Self-employed) | 2019 - Present</div>
                              <ul>
                                 <li>Led development of scalable AI projects, including a 3D game in Unity.</li>
@@ -376,7 +449,7 @@
             </div>
         </section>
 
-        <section id="education" class="fade-in">
+        <section id="education">
             <div class="container">
                  <div class="grid-2">
                     <div>
@@ -384,8 +457,8 @@
                         <ul>
                              <li class="glass-card"><div class="item-title">M.Eng Automation & Mechatronics (ongoing)</div><div class="item-subtitle">Saint Petersburg Electrotechnical University</div></li>
                             <li class="glass-card"><div class="item-title">B.Sc Physics (Hons)</div><div class="item-subtitle">Joseph Sarwuan Tarka University</div></li>
-                            <li class="glass-card"><div class="item-title">AI & Data Fundamentals</div><div class="item-subtitle">IBM <a href="#" class="item-link">[view]</a></div></li>
-                            <li class="glass-card"><div class="item-title">Python Development</div><div class="item-subtitle">MTF Institute <a href="#" class="item-link">[view]</a></div></li>
+                            <li class="glass-card"><div class="item-title">AI & Data Fundamentals</div><div class="item-subtitle">IBM</div></li>
+                            <li class="glass-card"><div class="item-title">Python Development</div><div class="item-subtitle">MTF Institute</div></li>
                         </ul>
                     </div>
                     <div>
@@ -402,19 +475,19 @@
         </section>
     </main>
 
-    <footer id="contact" class="fade-in">
+    <footer id="contact">
         <div class="container">
             <h2>Let's Build Something Great</h2>
             <p>I am currently open to new opportunities and collaborations. If you have a project in mind or just want to connect, feel free to reach out. Let's make it happen!</p>
-            <a href="mailto:aondoverpascaloryiman@gmail.com" class="btn">aondoverpascaloryiman@gmail.com</a>
+            <a href="mailto:aondoverslogantechllc@outlook.com" class="btn">aondoverslogantechllc@outlook.com</a>
             <div class="social-links">
                 <a href="https://github.com/kayung-developer" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/pascal-aondover" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/+2347065768073" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
                 <a href="tel:+2347065768073" target="_blank" aria-label="Phone"><i class="fas fa-phone"></i></a>
-                <a href="https://wa.me/+13434748966" target="_blank" aria-label="Whatsapp"><i class="fa fa-whatsapp"></i></a>
-                <a href="https://linkedin.com/in/pascal-aondover" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
             </div>
              <div class="footer-bottom">
-                 <p>© 2025 Aondover Pascal Oryiman. Designed & Built with ❤️</p>
+                 <p>© 2025 Aondover Pascal Oryiman. Designed & Built with passion.</p>
              </div>
         </div>
     </footer>
@@ -424,21 +497,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             // 1. TYPEWRITER EFFECT
             const typewriterElement = document.querySelector('.typewriter');
-            const texts = ["Full-Stack Developer", "AI & ML Enthusiast", "Proactive Problem-Solver", "Creative Technologist"];
-            let textIndex = 0, charIndex = 0;
-            function type() {
-                if (charIndex < texts[textIndex].length) {
-                    typewriterElement.textContent += texts[textIndex].charAt(charIndex++);
-                    setTimeout(type, 100);
-                } else { setTimeout(erase, 2000); }
+            if (typewriterElement) {
+                const texts = ["Full-Stack Developer.", "AI & ML Enthusiast.", "Proactive Problem-Solver.", "Creative Technologist."];
+                let textIndex = 0, charIndex = 0;
+                function type() {
+                    if (charIndex < texts[textIndex].length) {
+                        typewriterElement.textContent += texts[textIndex].charAt(charIndex++);
+                        setTimeout(type, 80);
+                    } else { setTimeout(erase, 2500); }
+                }
+                function erase() {
+                    if (charIndex > 0) {
+                        typewriterElement.textContent = texts[textIndex].substring(0, --charIndex);
+                        setTimeout(erase, 40);
+                    } else { textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
+                }
+                type();
             }
-            function erase() {
-                if (charIndex > 0) {
-                    typewriterElement.textContent = texts[textIndex].substring(0, --charIndex);
-                    setTimeout(erase, 50);
-                } else { textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
-            }
-            type();
 
             // 2. MOBILE NAVIGATION
             const menuToggle = document.querySelector('.menu-toggle');
@@ -468,46 +543,34 @@
                 });
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
                 });
             });
 
-            // 5. PROJECT FILTERING & SHOW MORE
-            const filterContainer = document.querySelector('.project-filters');
-            const projectCards = document.querySelectorAll('.project-card');
-            const showMoreBtn = document.getElementById('show-more-projects');
-
-            // Filter logic
-            filterContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('filter-btn')) {
-                    filterContainer.querySelector('.active').classList.remove('active');
-                    e.target.classList.add('active');
-
-                    const filterValue = e.target.getAttribute('data-filter');
-
-                    projectCards.forEach(card => {
-                        if (card.dataset.category.includes(filterValue) || filterValue === 'all') {
-                            card.classList.remove('hide');
-                        } else {
-                            card.classList.add('hide');
-                        }
-                    });
-                }
+            // 5. SPOTLIGHT CARD EFFECT
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--x', `${x}px`);
+                    card.style.setProperty('--y', `${y}px`);
+                });
             });
 
-            // Show More logic
-            if (showMoreBtn) {
-                showMoreBtn.addEventListener('click', () => {
-                    const hiddenProjects = document.querySelectorAll('.project-card.hidden-project');
-                    hiddenProjects.forEach(card => {
-                        card.classList.remove('hidden-project');
-                        card.classList.add('reveal');
-                    });
-                    showMoreBtn.style.display = 'none';
-                });
+            // 6. LOGO HANDLING
+            const logoImg = document.querySelector('.logo img');
+            if (logoImg && logoImg.getAttribute('src') !== 'logo.png') {
+                 logoImg.style.display = 'inline-block';
+                 logoImg.nextElementSibling.style.display = 'none'; // Hide text if logo exists
+            } else if (logoImg) {
+                logoImg.style.display = 'none';
+                logoImg.nextElementSibling.style.display = 'inline-block'; // Show text if no logo
             }
         });
     </script>
 </body>
 </html>
-
